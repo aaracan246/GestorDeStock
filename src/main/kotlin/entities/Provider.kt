@@ -1,9 +1,9 @@
-package org.example
+package org.example.entities
 
 import jakarta.persistence.*
 
 @Entity
-@Table
+@Table(name = "providers")
 data class Provider(
 
     @Column

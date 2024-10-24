@@ -1,11 +1,11 @@
-package org.example
+package org.example.entities
 
 import jakarta.persistence.*
 import java.util.*
 
 
 @Entity
-@Table
+@Table(name = "products")
 data class Product(
 
     @Column
