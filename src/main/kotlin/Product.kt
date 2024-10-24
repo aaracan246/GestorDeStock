@@ -8,6 +8,7 @@ import java.util.*
 @Table
 data class Product(
 
+    @Column
     val category: String,
 
     val name: String,
@@ -26,4 +27,4 @@ data class Product(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long)
+    val id: Long?)
