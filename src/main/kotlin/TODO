@@ -1,0 +1,11 @@
+1º Login
+2º App Stock Control
+    1. Alta producto
+    2. Baja producto
+    3. Modificar nombre producto
+    4. ""         ""      stock
+    5. obtener 1 producto
+    6. obtener producto con stock
+    7. ""       ""      sin stock
+    8. get proveedor de 1 producto
+    9. get todos los proveedores
