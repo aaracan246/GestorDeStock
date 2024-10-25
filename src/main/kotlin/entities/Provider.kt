@@ -11,6 +11,7 @@ data class Provider(
 
     val dir: String,
 
+    @ManyToOne
     val product: List<Product>,
 
     @Id

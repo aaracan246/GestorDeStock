@@ -23,6 +23,7 @@ data class Product(
 
     val stock: Int,
 
+    @OneToMany
     val provider: Provider,
 
     @Id
