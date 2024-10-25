@@ -1,4 +1,4 @@
-package org.example
+package org.example.controllers
 
 class GestorLogin {
     fun login(){}
