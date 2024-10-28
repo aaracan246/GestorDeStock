@@ -11,7 +11,7 @@ import jakarta.persistence.Table
 data class User(
 
     @Column(name = "password", nullable = false)
-    val password: String,
+    val password: Int,
 
     @Id
     val name: String)
