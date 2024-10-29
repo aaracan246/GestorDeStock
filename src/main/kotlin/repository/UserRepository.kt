@@ -1,8 +1,6 @@
 package org.example.repository
 
-import jakarta.persistence.EntityManager
-import jakarta.persistence.EntityManagerFactory
-import jakarta.persistence.Persistence
+
 import org.example.entities.User
 import org.example.utils.HibernateUtils
 
