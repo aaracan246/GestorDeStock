@@ -9,21 +9,16 @@ import org.example.utils.HibernateUtils
 
 class UserRepository {
 
-
-
     fun findName(username: String): User?{
 
-        val em = HibernateUtils.getEntityManagerFactory().createEntityManager()
+        val em = HibernateUtils.getEntityManagerFactory()
 
         val transaction = em.transaction
         var user: User? = null
 
         try {
             transaction.begin()
-            user = em.createQuery("FROM users WHERE name = :username", User::class.java)
-                    .setParameter("username", username)
-                    .singleResult
-
+            user = em.find(User::class.java, username)
             transaction.commit()
         }
         catch (e: Exception){

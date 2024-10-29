@@ -11,9 +11,12 @@ data class Provider(
 
     val dir: String,
 
-    @ManyToOne
-    val product: List<Product>,
+    @OneToMany(mappedBy = "provider")
+    val product: List<Product>?,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?)
+    val id: Long?){
+
+    constructor(): this("", "", null, null)
+}

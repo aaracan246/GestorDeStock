@@ -11,7 +11,10 @@ import jakarta.persistence.Table
 data class User(
 
     @Column(name = "password", nullable = false)
-    val password: Int,
+    val password: String,
 
     @Id
-    val name: String)
+    val name: String){
+
+    constructor(): this("", "")
+}

@@ -8,8 +8,7 @@ import jakarta.persistence.Persistence
 object HibernateUtils {
     private val _emf: EntityManagerFactory = Persistence.createEntityManagerFactory("controldestock")
 
-    fun getEntityManagerFactory(): EntityManagerFactory{
-        return _emf
+    fun getEntityManagerFactory(): EntityManager{
+        return _emf.createEntityManager()
     }
-
 }

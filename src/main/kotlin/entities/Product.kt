@@ -23,9 +23,13 @@ data class Product(
 
     val stock: Int,
 
-    @OneToMany
-    val provider: Provider,
+    @ManyToOne
+    @JoinColumn(name = "id_provider")
+    val provider: Provider?,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?)
+    val id: Long?
+) {
+    constructor(): this("","","",0f,0f,Date(),0,null,null)
+}
