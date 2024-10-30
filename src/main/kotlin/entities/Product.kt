@@ -9,8 +9,6 @@ import java.util.*
 data class Product(
 
     @Column
-    val category: String,
-
     val name: String,
 
     val desc: String,
@@ -31,5 +29,5 @@ data class Product(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?
 ) {
-    constructor(): this("","","",0f,0f,Date(),0,null,null)
+    constructor(): this("","",0f,0f,Date(),0,null,null)
 }
