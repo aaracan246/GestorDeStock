@@ -9,7 +9,7 @@ import java.util.*
 data class Product(
 
     @Column
-    val name: String,
+    var name: String,
 
     val desc: String,
 
@@ -19,7 +19,7 @@ data class Product(
 
     val dateRegister: Date,
 
-    val stock: Int,
+    var stock: Int,
 
     @ManyToOne
     @JoinColumn(name = "id_provider")

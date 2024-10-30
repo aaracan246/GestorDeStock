@@ -40,6 +40,7 @@ class ProductRepository {
             em.transaction.begin()
             em.persist(product)
             println("The product was registered successfully!")
+            em.transaction.commit()
         }
         catch (e: Exception){
             em.transaction.rollback()
@@ -54,11 +55,14 @@ class ProductRepository {
 
         try {
             em.transaction.begin()
+
             val product = em.find(Product::class.java, id)
+
             if (product != null){
                 em.remove(product)
                 println("The product was removed successfully!")
             }
+            em.transaction.commit()
         }
         catch (e: Exception){
             em.transaction.rollback()
@@ -72,13 +76,63 @@ class ProductRepository {
 
     }
 
-    fun modifyProductName(){}
+    fun modifyProductName(id: Long, newName: String){
 
-    fun modifyProductStock(){}
+        try {
+            em.transaction.begin()
 
-    fun getProduct(){}
+            val product = em.find(Product::class.java, id)
 
-    fun getProductsWithStock(){}
+            if (product != null){
+                product.name = newName
+                em.merge(product)
+                println("The product was renamed successfully!")
+            }
+            em.transaction.commit()
+        }
+        catch (e: Exception){
+            em.transaction.rollback()
+            throw e
+        }
+        finally {
+            em.close()
+        }
+    }
 
-    fun getProductsWithoutStock(){}
+    fun modifyProductStock(id: Long, newStock: Int){
+
+        try {
+            em.transaction.begin()
+
+            val product = em.find(Product::class.java, id)
+
+            if (product != null){
+                product.stock = newStock
+                em.merge(product)
+                println("The product stock was updated!")
+            }
+            em.transaction.commit()
+        }
+        catch (e: Exception){
+            em.transaction.rollback()
+            throw e
+        }
+        finally {
+            em.close()
+        }
+    }
+
+    fun getProduct(id: Long): Product?{
+        return em.find(Product::class.java, id)
+    }
+
+    fun getProductsWithStock(): List<Product>{
+        val query = em.createQuery("SELECT p FROM Product p WHERE p.stock > 0", Product::class.java)
+        return query.resultList // <-- devuelve los resultados de la query
+    }
+
+    fun getProductsWithoutStock(): List<Product>{
+        val query = em.createQuery("SELECT p FROM Product p WHERE p.stock = 0", Product::class.java)
+        return query.resultList
+    }
 }
