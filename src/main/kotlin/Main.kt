@@ -1,6 +1,6 @@
 package org.example
 
-import org.example.controllers.GestorLogin
+import org.example.controllers.ControllerLogin
 import org.example.entities.User
 import org.example.repository.UserRepository
 import org.example.utils.HibernateUtils
@@ -9,7 +9,7 @@ fun main() {
 
     val em = HibernateUtils.getEntityManagerFactory()
     val userRepository = UserRepository()
-    val gestorLogin = GestorLogin(userRepository)
+    val gestorLogin = ControllerLogin(userRepository)
 
     em.transaction.begin()
     val user1 = User("1234", "Morri")

@@ -8,7 +8,7 @@ class ProviderRepository {
     private val em = HibernateUtils.getEntityManagerFactory()
 
     fun getProvidersProd(): List<Provider>{
-        val query = em.createQuery("SELECT provider FROM providers ", Provider::class.java) // !!!!!???
+        val query = em.createQuery("SELECT p FROM providers p", Provider::class.java) // !!!!!???
         return query.resultList
     }
 
