@@ -27,8 +27,8 @@ data class Product(
     var stock: Int,
 
     @ManyToOne
-    @JoinColumn(name = "id_provider")
-    val provider: Provider?,
+    @JoinColumn(name = "id_supplier")
+    val supplier: Supplier?,
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

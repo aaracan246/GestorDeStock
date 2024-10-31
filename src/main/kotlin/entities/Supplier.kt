@@ -3,8 +3,8 @@ package org.example.entities
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "providers")
-data class Provider(
+@Table(name = "suppliers")
+data class Supplier(
 
     @Column(name = "name")
     val name: String,
@@ -12,7 +12,7 @@ data class Provider(
     @Column(name = "adress")
     val dir: String,
 
-    @OneToMany(mappedBy = "provider")
+    @OneToMany(mappedBy = "supplier")
     val product: List<Product>?,
 
     @Id

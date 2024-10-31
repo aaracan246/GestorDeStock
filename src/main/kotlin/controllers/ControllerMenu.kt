@@ -2,9 +2,9 @@ package org.example.controllers
 
 import jakarta.persistence.EntityManager
 import org.example.repository.ProductRepository
-import org.example.repository.ProviderRepository
+import org.example.repository.SupplierRepository
 
-class ControllerMenu(val em: EntityManager, private val pR: ProductRepository, private val prR: ProviderRepository) {
+class ControllerMenu(val em: EntityManager, private val pR: ProductRepository, private val prR: SupplierRepository) {
 
     private fun printMenu(){
 
@@ -77,11 +77,13 @@ class ControllerMenu(val em: EntityManager, private val pR: ProductRepository, p
                 }
 
                 8 -> {
-                    prR.getProvidersProd()
+                    val supplier = prR.getSupplierProd()
+                    println(supplier)
                 }
 
                 9 -> {
-                    prR.getAllProviders()
+                    val supplier = prR.getAllSuppliers()
+                    println(supplier)
                 }
 
                 0 -> {
