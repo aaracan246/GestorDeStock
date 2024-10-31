@@ -12,5 +12,8 @@ class ProviderRepository {
         return query.resultList
     }
 
-    fun getAllProviders(){}
+    fun getAllProviders(): List<Provider>{
+        val query = em.createQuery("SELECT p FROM providers p", Provider::class.java)
+        return query.resultList
+    }
 }

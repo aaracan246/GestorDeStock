@@ -6,9 +6,10 @@ import jakarta.persistence.*
 @Table(name = "providers")
 data class Provider(
 
-    @Column
+    @Column(name = "name")
     val name: String,
 
+    @Column(name = "adress")
     val dir: String,
 
     @OneToMany(mappedBy = "provider")

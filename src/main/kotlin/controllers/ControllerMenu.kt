@@ -1,8 +1,12 @@
 package org.example.controllers
 
-class ControllerMenu {
+import jakarta.persistence.EntityManager
+import org.example.repository.ProductRepository
+import org.example.repository.ProviderRepository
 
-    fun printMenu(){
+class ControllerMenu(val em: EntityManager, private val pR: ProductRepository, private val prR: ProviderRepository) {
+
+    private fun printMenu(){
 
         println("\n--- Options menu ---")
         println("1. Register a product")
@@ -19,19 +23,70 @@ class ControllerMenu {
     }
 
     fun menu(){
+
+        printMenu()
         while (true){
+            printMenu()
             when (readln().toInt()) {
-                1 -> {}
-                2 -> {}
-                3 -> {}
-                4 -> {}
-                5 -> {}
-                6 -> {}
-                7 -> {}
-                8 -> {}
-                9 -> {}
+
+                1 -> {
+                    val product = pR.askProdData()
+                    pR.registerProduct(product)
+                }
+
+                2 -> {
+                    println("Please, insert the ID of the product you want to remove: ")
+                    val inputID = readln().toLong()
+                    pR.deregisterProduct(inputID)
+                }
+
+                3 -> {
+                    println("Please, insert the ID of the product: ")
+                    val inputID = readln().toLong()
+
+                    println("Please, insert a new name for the product: ")
+                    val inputNewName = readln()
+                    pR.modifyProductName(inputID, inputNewName)
+                }
+
+                4 -> {
+                    println("Please, insert the ID of the product: ")
+                    val inputID = readln().toLong()
+
+                    println("Please, insert a new stock number for the product: ")
+                    val inputStock = readln().toInt()
+                    pR.modifyProductStock(inputID, inputStock)
+
+                }
+
+                5 -> {
+                    println("Please, insert the ID of the product: ")
+                    val inputID = readln().toLong()
+                    val product = pR.getProduct(inputID)
+                    println("The product ${product?.id}:\n name: ${product?.name}\n desc: ${product?.desc}\n price(no IVA): ${product?.priceNoIVA}\n price(IVA): ${product?.priceIVA}\n date: ${product?.dateRegister}\n stock: ${product?.stock}")
+                }
+
+                6 -> {
+                    val productList = pR.getProductsWithStock()
+                    println(productList)
+                }
+
+                7 -> {
+                    val productList = pR.getProductsWithoutStock()
+                    println(productList)
+                }
+
+                8 -> {
+                    prR.getProvidersProd()
+                }
+
+                9 -> {
+                    prR.getAllProviders()
+                }
+
                 0 -> {
                     println("Exiting...")
+                    em.close()
                     break
                 }
                 else -> println("Not a valid option. Please select a valid one: ")

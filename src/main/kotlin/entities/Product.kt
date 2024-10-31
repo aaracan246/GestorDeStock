@@ -8,17 +8,22 @@ import java.util.*
 @Table(name = "products")
 data class Product(
 
-    @Column
+    @Column(name = "name")
     var name: String,
 
+    @Column(name = "description")
     val desc: String,
 
+    @Column(name = "price")
     val priceNoIVA: Float,
 
+    @Column(name = "price_IVA")
     val priceIVA: Float,
 
+    @Column(name = "date")
     val dateRegister: Date,
 
+    @Column(name = "stock")
     var stock: Int,
 
     @ManyToOne
